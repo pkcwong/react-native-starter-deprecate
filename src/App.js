@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from "./redux/store";
-import { HomePage } from "./pages/home-page/home-page";
+import { NavigationStack } from "./pages/navigator";
 
 export class App extends React.Component {
 
@@ -14,7 +14,7 @@ export class App extends React.Component {
 			<Provider
 				store={store}
 			>
-				<HomePage/>
+				<NavigationStack/>
 			</Provider>
 		);
 	}
