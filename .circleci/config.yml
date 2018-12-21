@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: circleci/android:api-26-alpha
+    steps:
+    - checkout
+    - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    - run: sudo apt-get install -y nodejs
+    - run: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    - run: echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    - run: sudo apt-get update && sudo apt-get install yarn
+    - run: sudo npm install -g react-native-cli
+    - run: yarn install
+    - run: cd android/ && ./gradlew build

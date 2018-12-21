@@ -1,11 +1,11 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import { LoggerAction } from "../actions/logger-actions";
+import { LoggerAction } from "../actions/logger-action";
 
 export const LoggerSaga = function* () {
 	yield takeEvery('*', function* (action) {
 		if (action['type'] !== LoggerAction.WRITE_COMPLETE) {
 			console.log(action);
-			yield put(LoggerAction.complete(action));
+			yield put(LoggerAction._WRITE_COMPLETE(action));
 		}
 	});
 };
